@@ -44,6 +44,13 @@ class UsersController extends \BaseController {
 
 		$hotness = $this->calculateHotness($distance);
 
+		if ($hotness == 'target') {
+			$next_location = $user->last_location + 1;
+			$this->makeCall($user->phone, $next_location);
+			$user->last_location = $next_location;
+			$user->save();
+		}
+
 		return $this->_returnJsonP(
 			[
 				'destination' => $target['name'],

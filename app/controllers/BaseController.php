@@ -114,4 +114,26 @@ class BaseController extends Controller {
 		}
 	}
 
+	public function makeCall($phone, $location)
+	{
+		$client = new Services_Twilio(
+			getenv('TWILIO_SID'),
+			getenv('TWILIO_TOKEN'),
+			"2010-04-01"
+		);
+
+		try {
+			// Initiate a new outbound call
+			$call = $client->account->calls->create(
+				getenv('TWILIO_NUMBER'), // The number of the phone initiating the call
+				$phone, // The number of the phone receiving call
+				getenv('CDN_URL') . "{$location}.xml", // The URL Twilio will request when the call is answered
+				['Method' => 'get']
+			);
+		} catch (Exception $e) {
+			echo 'Error: ' . $e->getMessage();
+		}
+
+	}
+
 }
