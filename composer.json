@@ -8,7 +8,8 @@
 		"laravel/framework": "4.2.*"
 	},
     "require-dev": {
-        "way/generators": "~2.0"
+        "way/generators": "~2.0",
+        "barryvdh/laravel-ide-helper": "1.*"
     },
 	"autoload": {
 		"classmap": [
@@ -25,10 +26,11 @@
 			"php artisan clear-compiled",
 			"php artisan optimize"
 		],
-		"post-update-cmd": [
-			"php artisan clear-compiled",
-			"php artisan optimize"
-		],
+        "post-update-cmd":[
+            "php artisan clear-compiled",
+            "php artisan ide-helper:generate",
+            "php artisan optimize"
+        ],
 		"post-create-project-cmd": [
 			"php artisan key:generate"
 		]
