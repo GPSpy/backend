@@ -9,10 +9,14 @@ class BaseController extends Controller {
 	 */
 	protected function setupLayout()
 	{
-		if ( ! is_null($this->layout))
-		{
+		if (!is_null($this->layout)) {
 			$this->layout = View::make($this->layout);
 		}
 	}
 
+	protected function _returnJsonP($array)
+	{
+		return Response::json($array)
+			->setCallback(Input::get('callback'));
+	}
 }
