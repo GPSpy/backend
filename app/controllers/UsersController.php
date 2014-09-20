@@ -10,7 +10,15 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		return $this->_returnJsonP($_GET);
+		$user = new User();
+
+		$user->token = str_random(40);
+		$user->name  = $_GET['name'];
+		$user->phone = $_GET['phone'];
+		$user->save();
+
+		return $this->_returnJsonP($user);
+
 	}
 
 }
