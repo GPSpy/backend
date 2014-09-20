@@ -1,6 +1,6 @@
 <?php
 
-use GPSpy\Helpers\Locations;
+use \GPSpy\Helpers\Locations;
 
 class UsersController extends \BaseController {
 
@@ -14,9 +14,10 @@ class UsersController extends \BaseController {
 	{
 		$user = new User();
 
-		$user->token = str_random(40);
-		$user->name  = $_GET['name'];
-		$user->phone = $_GET['phone'];
+		$user->token         = str_random(40);
+		$user->name          = $_GET['name'];
+		$user->phone         = $_GET['phone'];
+		$user->last_location = 1;
 		$user->save();
 
 		return $this->_returnJsonP($user);
@@ -27,7 +28,28 @@ class UsersController extends \BaseController {
 		$token = $_GET['token'];
 		$user  = User::where('token', '=', $token)->firstOrFail();
 
-		return $this->_returnJsonP($user);
+		$location = [
+			'latitude'  => (float)$_GET['latitude'],
+			'longitude' => (float)$_GET['longitude']
+		];
+
+		$target = $this->_getLocation($user->last_location + 1);
+
+		$distance = $this->vincentyGreatCircleDistance(
+			$location['latitude'],
+			$location['longitude'],
+			$target['latitude'],
+			$target['longitude']
+		);
+
+		$hotness = 'debug';
+
+		return $this->_returnJsonP(
+			[
+				'hotness'  => $hotness,
+				'distance' => $distance
+			]
+		);
 	}
 
 }

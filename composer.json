@@ -20,9 +20,6 @@
 			"app/tests/TestCase.php"
 		]
 	},
-    "psr-4": {
-        "GPSpy\\": "app/GPSpy"
-    },
 	"scripts": {
 		"post-install-cmd": [
 			"php artisan clear-compiled",

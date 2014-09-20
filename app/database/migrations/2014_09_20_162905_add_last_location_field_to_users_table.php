@@ -14,7 +14,7 @@ class AddLastLocationFieldToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			$table->string('last_location')->after('phone');
+			$table->integer('last_location')->after('phone');
 		});
 	}
 
