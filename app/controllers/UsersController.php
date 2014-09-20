@@ -42,12 +42,13 @@ class UsersController extends \BaseController {
 			$target['longitude']
 		);
 
-		$hotness = 'debug';
+		$hotness = $this->calculateHotness($distance);
 
 		return $this->_returnJsonP(
 			[
-				'hotness'  => $hotness,
-				'distance' => $distance
+				'destination' => $target['name'],
+				'hotness'     => $hotness,
+				'distance'    => $distance
 			]
 		);
 	}
