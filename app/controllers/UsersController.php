@@ -1,5 +1,7 @@
 <?php
 
+use GPSpy\Helpers\Locations;
+
 class UsersController extends \BaseController {
 
 	/**
@@ -23,8 +25,9 @@ class UsersController extends \BaseController {
 	public function locate()
 	{
 		$token = $_GET['token'];
-		$user = User::where('token', '=', $token)->firstOrFail();
-		return $user;
+		$user  = User::where('token', '=', $token)->firstOrFail();
+
+		return $this->_returnJsonP($user);
 	}
 
 }
