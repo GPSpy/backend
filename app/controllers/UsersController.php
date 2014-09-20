@@ -8,7 +8,7 @@ class UsersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function register()
 	{
 		$user = new User();
 
@@ -18,7 +18,13 @@ class UsersController extends \BaseController {
 		$user->save();
 
 		return $this->_returnJsonP($user);
+	}
 
+	public function locate()
+	{
+		$token = $_GET['token'];
+		$user = User::where('token', '=', $token)->firstOrFail();
+		return $user;
 	}
 
 }
