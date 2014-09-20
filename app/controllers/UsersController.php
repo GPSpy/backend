@@ -29,8 +29,8 @@ class UsersController extends \BaseController {
 		$user  = User::where('token', '=', $token)->firstOrFail();
 
 		$location = [
-			'latitude'  => round((float)$_GET['latitude'], 7),
-			'longitude' => round((float)$_GET['longitude'], 7)
+			'latitude'  => round((float)$_GET['latitude'], 5),
+			'longitude' => round((float)$_GET['longitude'], 5)
 		];
 
 		$target = $this->_getLocation($user->last_location + 1);
