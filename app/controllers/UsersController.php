@@ -20,6 +20,8 @@ class UsersController extends \BaseController {
 		$user->last_location = 1;
 		$user->save();
 
+		$this->makeCall($user->phone, 1);
+
 		return $this->_returnJsonP($user);
 	}
 
