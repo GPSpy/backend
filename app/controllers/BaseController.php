@@ -107,7 +107,7 @@ class BaseController extends Controller {
 			return 'cold';
 		} elseif ($distance < 250 && $distance > 100) {
 			return 'warm';
-		} elseif ($distance < 100 && $distance > 10) {
+		} elseif ($distance < 100 && $distance > 30) {
 			return 'hot';
 		} else {
 			return 'target';
