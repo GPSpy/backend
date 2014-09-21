@@ -22,34 +22,34 @@ class BaseController extends Controller {
 
 	var $locations = [
 		1 => [
-			'latitude'  => 1,
-			'longitude' => 1,
-			'name'      => 'MI-12 (HQ)'
+			'latitude'  => 52.48871909,
+			'longitude' => - 1.88758850,
+			'name'      => 'Innovation Birmingham Campus'
 		],
 		2 => [
-			'latitude'  => 52.488903,
-			'longitude' => - 1.8870747,
-			'name'      => 'Martini Avenue'
+			'latitude'  => 52.4878110,
+			'longitude' => - 1.8872666,
+			'name'      => 'Gosta Green'
 		],
 		3 => [
-			'latitude'  => 52.488643,
-			'longitude' => - 1.8865992,
-			'name'      => 'Crime Alley'
+			'latitude'  => 52.487334086,
+			'longitude' => - 1.888135671,
+			'name'      => 'Sacks Of Potatoes'
 		],
 		4 => [
-			'latitude'  => 1,
-			'longitude' => 1,
-			'name'      => 'Martini Avenue'
+			'latitude'  => 52.48678529,
+			'longitude' => - 1.88931584,
+			'name'      => 'Aston University Entrance'
 		],
 		5 => [
-			'latitude'  => 1,
-			'longitude' => 1,
-			'name'      => 'Location five'
+			'latitude'  => 52.4857660,
+			'longitude' => - 1.8900775,
+			'name'      => 'Tesco'
 		],
 		6 => [
-			'latitude'  => 1,
-			'longitude' => 1,
-			'name'      => 'Doctor Evil Lair'
+			'latitude'  => 52.484090,
+			'longitude' => - 1.8898522,
+			'name'      => 'Lakeside'
 		],
 	];
 
@@ -107,7 +107,7 @@ class BaseController extends Controller {
 			return 'cold';
 		} elseif ($distance < 250 && $distance > 100) {
 			return 'warm';
-		} elseif ($distance < 100 && $distance > 20) {
+		} elseif ($distance < 100 && $distance > 10) {
 			return 'hot';
 		} else {
 			return 'target';
